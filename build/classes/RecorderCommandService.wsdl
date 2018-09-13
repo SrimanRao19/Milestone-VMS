@@ -1,0 +1,2246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://videoos.net/2/XProtectCSRecorderCommand" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://videoos.net/2/XProtectCSRecorderCommand" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://videoos.net/2/XProtectCSRecorderCommand">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetVersionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZMoveAbsolute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="ptzArgs" type="tns:PTZArgs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PTZArgs">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="movement" type="tns:PTZPairDouble" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="speed" type="tns:PTZPairDouble" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="automatic" type="tns:PTZPairBoolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Normalized" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PTZPairDouble">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="value" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PTZPairBoolean">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="value" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PTZMoveAbsoluteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PTZMoveRelative">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="ptzArgs" type="tns:PTZArgs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZMoveRelativeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PTZMoveHome">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZMoveHomeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PTZMoveStart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="ptzArgs" type="tns:PTZArgs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZMoveStartResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PTZMoveStop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZMoveStopResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PTZCenter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="refWidth" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="refHeight" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="centerX" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="centerY" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="zoom" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZCenterResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PTZRectangle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="refWidth" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="refHeight" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="left" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="top" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="bottom" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="right" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZRectangleResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PTZGetAbsolutePosition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZGetAbsolutePositionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PTZGetAbsolutePositionResult" type="tns:PTZArgs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZExtendedManualSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZExtendedManualSessionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PTZGetSessionInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZGetSessionInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PTZGetSessionInfoResult" type="tns:PtzSessionInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PtzSessionInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="PatrollingProfileId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ManualPatrollingProfileId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:UserInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="Priority" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Reserved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPatrolling" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAnonymous" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPaused" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeoutSec" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeoutLeftSec" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLicensed" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Sid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PTZReserveSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZReserveSessionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PTZReleaseSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZReleaseSessionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PTZActivatePatrollingSchema">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="patrollingSchemaId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZActivatePatrollingSchemaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PTZDeactivatePatrollingSchema">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="patrollingSchemaId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PTZDeactivatePatrollingSchemaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PresetGetList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PresetGetListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PresetGetListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PresetMoveTo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="presetName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PresetMoveToResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PresetSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="presetName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PresetSetResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="OutputActivate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OutputActivateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="OutputDeactivate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OutputDeactivateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="OutputTrigger">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="duration" type="tns:TimeDuration" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TimeDuration">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MicroSeconds" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="OutputTriggerResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="OutputGetState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OutputGetStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OutputGetStateResult" type="tns:IOState" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="IOState">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="Activated" />
+          <s:enumeration value="Deactivated" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SequencesGetTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequencesGetTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SequencesGetTypesResult" type="tns:ArrayOfSequenceType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSequenceType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SequenceType" nillable="true" type="tns:SequenceType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SequenceType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SequencesGet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceType" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="minTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequencesGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SequencesGetResult" type="tns:ArrayOfSequenceEntry" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSequenceEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SequenceEntry" nillable="true" type="tns:SequenceEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SequenceEntry">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TimeBegin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeTrigged" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeEnd" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SequencesGetAround">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceType" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="centerTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxCountBefore" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxCountAfter" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequencesGetAroundResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SequencesGetAroundResult" type="tns:ArrayOfSequenceEntry" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequencesGetAroundWithSpan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceType" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="centerTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="maxTimeBefore" type="tns:TimeDuration" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxCountBefore" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="maxTimeAfter" type="tns:TimeDuration" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxCountAfter" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SequencesGetAroundWithSpanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SequencesGetAroundWithSpanResult" type="tns:ArrayOfSequenceEntry" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRetentionTimeLimit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRetentionTimeLimitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetRetentionTimeLimitResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimeLineInformationGet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="timeLineInformationTypes" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeLineInformationBeginTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="timeLineInformationInterval" type="tns:TimeDuration" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeLineInformationCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TimeLineInformationGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TimeLineInformationGetResult" type="tns:ArrayOfTimeLineInformationData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTimeLineInformationData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TimeLineInformationData" nillable="true" type="tns:TimeLineInformationData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TimeLineInformationData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="BeginTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Interval" type="tns:TimeDuration" />
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SmartSearchStart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="searchBeginTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="searchEndTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="sensitivity" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="searchInterval" type="tns:TimeDuration" />
+            <s:element minOccurs="0" maxOccurs="1" name="searchMask" type="tns:ImageMask" />
+            <s:element minOccurs="1" maxOccurs="1" name="ignoreInitialMotion" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="resultMotionMaskSize" type="tns:Size" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ImageMask">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Size" type="tns:Size" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mask" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Size">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Width" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SmartSearchStartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SmartSearchStartResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SmartSearchCancel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="smartSearchId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SmartSearchCancelResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SmartSearchGetStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="smartSearchId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SmartSearchGetStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SmartSearchGetStatusResult" type="tns:SmartSearchStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SmartSearchStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentSearchTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:SmartSearchStatusType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="SmartSearchStatusType">
+        <s:restriction base="s:string">
+          <s:enumeration value="UnspecifiedError" />
+          <s:enumeration value="SearchInProgress" />
+          <s:enumeration value="SearchResultReady" />
+          <s:enumeration value="SearchEndTimeReached" />
+          <s:enumeration value="SearchCancelled" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SmartSearchGetResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="smartSearchId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="continueSearch" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SmartSearchGetResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SmartSearchGetResultResult" type="tns:SmartSearchResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SmartSearchResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ImageTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="MotionMask" type="tns:ImageMask" />
+          <s:element minOccurs="0" maxOccurs="1" name="MotionAreas" type="tns:MotionAreaInfos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MotionAreaInfos">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Resolution" type="tns:Size" />
+          <s:element minOccurs="0" maxOccurs="1" name="Areas" type="tns:ArrayOfMotionAreaInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMotionAreaInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MotionAreaInfo" nillable="true" type="tns:MotionAreaInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MotionAreaInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="X" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Y" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Width" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ControlLiveStream">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="clientID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="controlID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="devices" type="tns:ArrayOfLiveStreamDevice" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLiveStreamDevice">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LiveStreamDevice" nillable="true" type="tns:LiveStreamDevice" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LiveStreamDevice">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="LiveStreamSettings" type="tns:ArrayOfLiveStreamSetting" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLiveStreamSetting">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LiveStreamSetting" nillable="true" type="tns:LiveStreamSetting" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LiveStreamSetting">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ControlLiveStreamResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="JPEGGetAt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="time" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JPEGGetAtResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JPEGGetAtResult" type="tns:JPEGData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="JPEGData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="JPEGGetAtOrBefore">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="time" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JPEGGetAtOrBeforeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JPEGGetAtOrBeforeResult" type="tns:JPEGData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JPEGGetAtOrAfter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="time" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JPEGGetAtOrAfterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JPEGGetAtOrAfterResult" type="tns:JPEGData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JPEGGetLive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxWidth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxHeight" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JPEGGetLiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JPEGGetLiveResult" type="tns:JPEGData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InputGetState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InputGetStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InputGetStateResult" type="tns:IOState" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartRecording">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="recordingTimeMicroSeconds" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartRecordingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartRecordingResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendDriverCommand">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="command" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendDriverCommandResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SendDriverCommandWithResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="command" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="parameter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendDriverCommandWithResponseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendDriverCommandWithResponseResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MulticastStart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="clientCapabilities" type="tns:ClientCapabilities" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ClientCapabilities">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PrivacyMask" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MulticastStartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MulticastStartResult" type="tns:ArrayOfMulticastInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMulticastInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MulticastInfo" nillable="true" type="tns:MulticastInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MulticastInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServerPort" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClientPort" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="KeepAliveInterval" type="tns:TimeDuration" />
+          <s:element minOccurs="1" maxOccurs="1" name="Encrypted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="MulticastSessionId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="SSRC" type="s:unsignedInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrivacyMask" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MulticastContinue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="multicastSessionIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MulticastContinueResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="MulticastStop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="multicastSessionIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MulticastStopResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IsManualRecording">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsManualRecordingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsManualRecordingResult" type="tns:ArrayOfManualRecordingInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfManualRecordingInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ManualRecordingInfo" nillable="true" type="tns:ManualRecordingInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ManualRecordingInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsManualRecording" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="StartManualRecording">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartManualRecordingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StartManualRecordingResult" type="tns:ArrayOfManualRecordingResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfManualRecordingResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ManualRecordingResult" nillable="true" type="tns:ManualRecordingResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ManualRecordingResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="StopManualRecording">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StopManualRecordingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StopManualRecordingResult" type="tns:ArrayOfManualRecordingResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZMoveAbsoluteSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZMoveAbsolute" />
+  </wsdl:message>
+  <wsdl:message name="PTZMoveAbsoluteSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZMoveAbsoluteResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZMoveRelativeSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZMoveRelative" />
+  </wsdl:message>
+  <wsdl:message name="PTZMoveRelativeSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZMoveRelativeResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZMoveHomeSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZMoveHome" />
+  </wsdl:message>
+  <wsdl:message name="PTZMoveHomeSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZMoveHomeResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZMoveStartSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZMoveStart" />
+  </wsdl:message>
+  <wsdl:message name="PTZMoveStartSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZMoveStartResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZMoveStopSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZMoveStop" />
+  </wsdl:message>
+  <wsdl:message name="PTZMoveStopSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZMoveStopResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZCenterSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZCenter" />
+  </wsdl:message>
+  <wsdl:message name="PTZCenterSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZCenterResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZRectangleSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZRectangle" />
+  </wsdl:message>
+  <wsdl:message name="PTZRectangleSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZRectangleResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZGetAbsolutePositionSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZGetAbsolutePosition" />
+  </wsdl:message>
+  <wsdl:message name="PTZGetAbsolutePositionSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZGetAbsolutePositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZExtendedManualSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZExtendedManualSession" />
+  </wsdl:message>
+  <wsdl:message name="PTZExtendedManualSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZExtendedManualSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZGetSessionInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZGetSessionInfo" />
+  </wsdl:message>
+  <wsdl:message name="PTZGetSessionInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZGetSessionInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZReserveSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZReserveSession" />
+  </wsdl:message>
+  <wsdl:message name="PTZReserveSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZReserveSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZReleaseSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZReleaseSession" />
+  </wsdl:message>
+  <wsdl:message name="PTZReleaseSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZReleaseSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZActivatePatrollingSchemaSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZActivatePatrollingSchema" />
+  </wsdl:message>
+  <wsdl:message name="PTZActivatePatrollingSchemaSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZActivatePatrollingSchemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="PTZDeactivatePatrollingSchemaSoapIn">
+    <wsdl:part name="parameters" element="tns:PTZDeactivatePatrollingSchema" />
+  </wsdl:message>
+  <wsdl:message name="PTZDeactivatePatrollingSchemaSoapOut">
+    <wsdl:part name="parameters" element="tns:PTZDeactivatePatrollingSchemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="PresetGetListSoapIn">
+    <wsdl:part name="parameters" element="tns:PresetGetList" />
+  </wsdl:message>
+  <wsdl:message name="PresetGetListSoapOut">
+    <wsdl:part name="parameters" element="tns:PresetGetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="PresetMoveToSoapIn">
+    <wsdl:part name="parameters" element="tns:PresetMoveTo" />
+  </wsdl:message>
+  <wsdl:message name="PresetMoveToSoapOut">
+    <wsdl:part name="parameters" element="tns:PresetMoveToResponse" />
+  </wsdl:message>
+  <wsdl:message name="PresetSetSoapIn">
+    <wsdl:part name="parameters" element="tns:PresetSet" />
+  </wsdl:message>
+  <wsdl:message name="PresetSetSoapOut">
+    <wsdl:part name="parameters" element="tns:PresetSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="OutputActivateSoapIn">
+    <wsdl:part name="parameters" element="tns:OutputActivate" />
+  </wsdl:message>
+  <wsdl:message name="OutputActivateSoapOut">
+    <wsdl:part name="parameters" element="tns:OutputActivateResponse" />
+  </wsdl:message>
+  <wsdl:message name="OutputDeactivateSoapIn">
+    <wsdl:part name="parameters" element="tns:OutputDeactivate" />
+  </wsdl:message>
+  <wsdl:message name="OutputDeactivateSoapOut">
+    <wsdl:part name="parameters" element="tns:OutputDeactivateResponse" />
+  </wsdl:message>
+  <wsdl:message name="OutputTriggerSoapIn">
+    <wsdl:part name="parameters" element="tns:OutputTrigger" />
+  </wsdl:message>
+  <wsdl:message name="OutputTriggerSoapOut">
+    <wsdl:part name="parameters" element="tns:OutputTriggerResponse" />
+  </wsdl:message>
+  <wsdl:message name="OutputGetStateSoapIn">
+    <wsdl:part name="parameters" element="tns:OutputGetState" />
+  </wsdl:message>
+  <wsdl:message name="OutputGetStateSoapOut">
+    <wsdl:part name="parameters" element="tns:OutputGetStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="SequencesGetTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:SequencesGetTypes" />
+  </wsdl:message>
+  <wsdl:message name="SequencesGetTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:SequencesGetTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SequencesGetSoapIn">
+    <wsdl:part name="parameters" element="tns:SequencesGet" />
+  </wsdl:message>
+  <wsdl:message name="SequencesGetSoapOut">
+    <wsdl:part name="parameters" element="tns:SequencesGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="SequencesGetAroundSoapIn">
+    <wsdl:part name="parameters" element="tns:SequencesGetAround" />
+  </wsdl:message>
+  <wsdl:message name="SequencesGetAroundSoapOut">
+    <wsdl:part name="parameters" element="tns:SequencesGetAroundResponse" />
+  </wsdl:message>
+  <wsdl:message name="SequencesGetAroundWithSpanSoapIn">
+    <wsdl:part name="parameters" element="tns:SequencesGetAroundWithSpan" />
+  </wsdl:message>
+  <wsdl:message name="SequencesGetAroundWithSpanSoapOut">
+    <wsdl:part name="parameters" element="tns:SequencesGetAroundWithSpanResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRetentionTimeLimitSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRetentionTimeLimit" />
+  </wsdl:message>
+  <wsdl:message name="GetRetentionTimeLimitSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRetentionTimeLimitResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimeLineInformationGetSoapIn">
+    <wsdl:part name="parameters" element="tns:TimeLineInformationGet" />
+  </wsdl:message>
+  <wsdl:message name="TimeLineInformationGetSoapOut">
+    <wsdl:part name="parameters" element="tns:TimeLineInformationGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="SmartSearchStartSoapIn">
+    <wsdl:part name="parameters" element="tns:SmartSearchStart" />
+  </wsdl:message>
+  <wsdl:message name="SmartSearchStartSoapOut">
+    <wsdl:part name="parameters" element="tns:SmartSearchStartResponse" />
+  </wsdl:message>
+  <wsdl:message name="SmartSearchCancelSoapIn">
+    <wsdl:part name="parameters" element="tns:SmartSearchCancel" />
+  </wsdl:message>
+  <wsdl:message name="SmartSearchCancelSoapOut">
+    <wsdl:part name="parameters" element="tns:SmartSearchCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="SmartSearchGetStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:SmartSearchGetStatus" />
+  </wsdl:message>
+  <wsdl:message name="SmartSearchGetStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:SmartSearchGetStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="SmartSearchGetResultSoapIn">
+    <wsdl:part name="parameters" element="tns:SmartSearchGetResult" />
+  </wsdl:message>
+  <wsdl:message name="SmartSearchGetResultSoapOut">
+    <wsdl:part name="parameters" element="tns:SmartSearchGetResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="ControlLiveStreamSoapIn">
+    <wsdl:part name="parameters" element="tns:ControlLiveStream" />
+  </wsdl:message>
+  <wsdl:message name="ControlLiveStreamSoapOut">
+    <wsdl:part name="parameters" element="tns:ControlLiveStreamResponse" />
+  </wsdl:message>
+  <wsdl:message name="JPEGGetAtSoapIn">
+    <wsdl:part name="parameters" element="tns:JPEGGetAt" />
+  </wsdl:message>
+  <wsdl:message name="JPEGGetAtSoapOut">
+    <wsdl:part name="parameters" element="tns:JPEGGetAtResponse" />
+  </wsdl:message>
+  <wsdl:message name="JPEGGetAtOrBeforeSoapIn">
+    <wsdl:part name="parameters" element="tns:JPEGGetAtOrBefore" />
+  </wsdl:message>
+  <wsdl:message name="JPEGGetAtOrBeforeSoapOut">
+    <wsdl:part name="parameters" element="tns:JPEGGetAtOrBeforeResponse" />
+  </wsdl:message>
+  <wsdl:message name="JPEGGetAtOrAfterSoapIn">
+    <wsdl:part name="parameters" element="tns:JPEGGetAtOrAfter" />
+  </wsdl:message>
+  <wsdl:message name="JPEGGetAtOrAfterSoapOut">
+    <wsdl:part name="parameters" element="tns:JPEGGetAtOrAfterResponse" />
+  </wsdl:message>
+  <wsdl:message name="JPEGGetLiveSoapIn">
+    <wsdl:part name="parameters" element="tns:JPEGGetLive" />
+  </wsdl:message>
+  <wsdl:message name="JPEGGetLiveSoapOut">
+    <wsdl:part name="parameters" element="tns:JPEGGetLiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="InputGetStateSoapIn">
+    <wsdl:part name="parameters" element="tns:InputGetState" />
+  </wsdl:message>
+  <wsdl:message name="InputGetStateSoapOut">
+    <wsdl:part name="parameters" element="tns:InputGetStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartRecordingSoapIn">
+    <wsdl:part name="parameters" element="tns:StartRecording" />
+  </wsdl:message>
+  <wsdl:message name="StartRecordingSoapOut">
+    <wsdl:part name="parameters" element="tns:StartRecordingResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendDriverCommandSoapIn">
+    <wsdl:part name="parameters" element="tns:SendDriverCommand" />
+  </wsdl:message>
+  <wsdl:message name="SendDriverCommandSoapOut">
+    <wsdl:part name="parameters" element="tns:SendDriverCommandResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendDriverCommandWithResponseSoapIn">
+    <wsdl:part name="parameters" element="tns:SendDriverCommandWithResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendDriverCommandWithResponseSoapOut">
+    <wsdl:part name="parameters" element="tns:SendDriverCommandWithResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="MulticastStartSoapIn">
+    <wsdl:part name="parameters" element="tns:MulticastStart" />
+  </wsdl:message>
+  <wsdl:message name="MulticastStartSoapOut">
+    <wsdl:part name="parameters" element="tns:MulticastStartResponse" />
+  </wsdl:message>
+  <wsdl:message name="MulticastContinueSoapIn">
+    <wsdl:part name="parameters" element="tns:MulticastContinue" />
+  </wsdl:message>
+  <wsdl:message name="MulticastContinueSoapOut">
+    <wsdl:part name="parameters" element="tns:MulticastContinueResponse" />
+  </wsdl:message>
+  <wsdl:message name="MulticastStopSoapIn">
+    <wsdl:part name="parameters" element="tns:MulticastStop" />
+  </wsdl:message>
+  <wsdl:message name="MulticastStopSoapOut">
+    <wsdl:part name="parameters" element="tns:MulticastStopResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsManualRecordingSoapIn">
+    <wsdl:part name="parameters" element="tns:IsManualRecording" />
+  </wsdl:message>
+  <wsdl:message name="IsManualRecordingSoapOut">
+    <wsdl:part name="parameters" element="tns:IsManualRecordingResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartManualRecordingSoapIn">
+    <wsdl:part name="parameters" element="tns:StartManualRecording" />
+  </wsdl:message>
+  <wsdl:message name="StartManualRecordingSoapOut">
+    <wsdl:part name="parameters" element="tns:StartManualRecordingResponse" />
+  </wsdl:message>
+  <wsdl:message name="StopManualRecordingSoapIn">
+    <wsdl:part name="parameters" element="tns:StopManualRecording" />
+  </wsdl:message>
+  <wsdl:message name="StopManualRecordingSoapOut">
+    <wsdl:part name="parameters" element="tns:StopManualRecordingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RecorderCommandServiceSoap">
+    <wsdl:operation name="GetVersion">
+      <wsdl:input message="tns:GetVersionSoapIn" />
+      <wsdl:output message="tns:GetVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveAbsolute">
+      <wsdl:input message="tns:PTZMoveAbsoluteSoapIn" />
+      <wsdl:output message="tns:PTZMoveAbsoluteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveRelative">
+      <wsdl:input message="tns:PTZMoveRelativeSoapIn" />
+      <wsdl:output message="tns:PTZMoveRelativeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveHome">
+      <wsdl:input message="tns:PTZMoveHomeSoapIn" />
+      <wsdl:output message="tns:PTZMoveHomeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveStart">
+      <wsdl:input message="tns:PTZMoveStartSoapIn" />
+      <wsdl:output message="tns:PTZMoveStartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveStop">
+      <wsdl:input message="tns:PTZMoveStopSoapIn" />
+      <wsdl:output message="tns:PTZMoveStopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZCenter">
+      <wsdl:input message="tns:PTZCenterSoapIn" />
+      <wsdl:output message="tns:PTZCenterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZRectangle">
+      <wsdl:input message="tns:PTZRectangleSoapIn" />
+      <wsdl:output message="tns:PTZRectangleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZGetAbsolutePosition">
+      <wsdl:input message="tns:PTZGetAbsolutePositionSoapIn" />
+      <wsdl:output message="tns:PTZGetAbsolutePositionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZExtendedManualSession">
+      <wsdl:input message="tns:PTZExtendedManualSessionSoapIn" />
+      <wsdl:output message="tns:PTZExtendedManualSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZGetSessionInfo">
+      <wsdl:input message="tns:PTZGetSessionInfoSoapIn" />
+      <wsdl:output message="tns:PTZGetSessionInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZReserveSession">
+      <wsdl:input message="tns:PTZReserveSessionSoapIn" />
+      <wsdl:output message="tns:PTZReserveSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZReleaseSession">
+      <wsdl:input message="tns:PTZReleaseSessionSoapIn" />
+      <wsdl:output message="tns:PTZReleaseSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZActivatePatrollingSchema">
+      <wsdl:input message="tns:PTZActivatePatrollingSchemaSoapIn" />
+      <wsdl:output message="tns:PTZActivatePatrollingSchemaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PTZDeactivatePatrollingSchema">
+      <wsdl:input message="tns:PTZDeactivatePatrollingSchemaSoapIn" />
+      <wsdl:output message="tns:PTZDeactivatePatrollingSchemaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PresetGetList">
+      <wsdl:input message="tns:PresetGetListSoapIn" />
+      <wsdl:output message="tns:PresetGetListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PresetMoveTo">
+      <wsdl:input message="tns:PresetMoveToSoapIn" />
+      <wsdl:output message="tns:PresetMoveToSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PresetSet">
+      <wsdl:input message="tns:PresetSetSoapIn" />
+      <wsdl:output message="tns:PresetSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OutputActivate">
+      <wsdl:input message="tns:OutputActivateSoapIn" />
+      <wsdl:output message="tns:OutputActivateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OutputDeactivate">
+      <wsdl:input message="tns:OutputDeactivateSoapIn" />
+      <wsdl:output message="tns:OutputDeactivateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OutputTrigger">
+      <wsdl:input message="tns:OutputTriggerSoapIn" />
+      <wsdl:output message="tns:OutputTriggerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OutputGetState">
+      <wsdl:input message="tns:OutputGetStateSoapIn" />
+      <wsdl:output message="tns:OutputGetStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGetTypes">
+      <wsdl:input message="tns:SequencesGetTypesSoapIn" />
+      <wsdl:output message="tns:SequencesGetTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGet">
+      <wsdl:input message="tns:SequencesGetSoapIn" />
+      <wsdl:output message="tns:SequencesGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGetAround">
+      <wsdl:input message="tns:SequencesGetAroundSoapIn" />
+      <wsdl:output message="tns:SequencesGetAroundSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGetAroundWithSpan">
+      <wsdl:input message="tns:SequencesGetAroundWithSpanSoapIn" />
+      <wsdl:output message="tns:SequencesGetAroundWithSpanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRetentionTimeLimit">
+      <wsdl:input message="tns:GetRetentionTimeLimitSoapIn" />
+      <wsdl:output message="tns:GetRetentionTimeLimitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TimeLineInformationGet">
+      <wsdl:input message="tns:TimeLineInformationGetSoapIn" />
+      <wsdl:output message="tns:TimeLineInformationGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchStart">
+      <wsdl:input message="tns:SmartSearchStartSoapIn" />
+      <wsdl:output message="tns:SmartSearchStartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchCancel">
+      <wsdl:input message="tns:SmartSearchCancelSoapIn" />
+      <wsdl:output message="tns:SmartSearchCancelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchGetStatus">
+      <wsdl:input message="tns:SmartSearchGetStatusSoapIn" />
+      <wsdl:output message="tns:SmartSearchGetStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchGetResult">
+      <wsdl:input message="tns:SmartSearchGetResultSoapIn" />
+      <wsdl:output message="tns:SmartSearchGetResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ControlLiveStream">
+      <wsdl:input message="tns:ControlLiveStreamSoapIn" />
+      <wsdl:output message="tns:ControlLiveStreamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetAt">
+      <wsdl:input message="tns:JPEGGetAtSoapIn" />
+      <wsdl:output message="tns:JPEGGetAtSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetAtOrBefore">
+      <wsdl:input message="tns:JPEGGetAtOrBeforeSoapIn" />
+      <wsdl:output message="tns:JPEGGetAtOrBeforeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetAtOrAfter">
+      <wsdl:input message="tns:JPEGGetAtOrAfterSoapIn" />
+      <wsdl:output message="tns:JPEGGetAtOrAfterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetLive">
+      <wsdl:input message="tns:JPEGGetLiveSoapIn" />
+      <wsdl:output message="tns:JPEGGetLiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InputGetState">
+      <wsdl:input message="tns:InputGetStateSoapIn" />
+      <wsdl:output message="tns:InputGetStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartRecording">
+      <wsdl:input message="tns:StartRecordingSoapIn" />
+      <wsdl:output message="tns:StartRecordingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendDriverCommand">
+      <wsdl:input message="tns:SendDriverCommandSoapIn" />
+      <wsdl:output message="tns:SendDriverCommandSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendDriverCommandWithResponse">
+      <wsdl:input message="tns:SendDriverCommandWithResponseSoapIn" />
+      <wsdl:output message="tns:SendDriverCommandWithResponseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MulticastStart">
+      <wsdl:input message="tns:MulticastStartSoapIn" />
+      <wsdl:output message="tns:MulticastStartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MulticastContinue">
+      <wsdl:input message="tns:MulticastContinueSoapIn" />
+      <wsdl:output message="tns:MulticastContinueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MulticastStop">
+      <wsdl:input message="tns:MulticastStopSoapIn" />
+      <wsdl:output message="tns:MulticastStopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsManualRecording">
+      <wsdl:input message="tns:IsManualRecordingSoapIn" />
+      <wsdl:output message="tns:IsManualRecordingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartManualRecording">
+      <wsdl:input message="tns:StartManualRecordingSoapIn" />
+      <wsdl:output message="tns:StartManualRecordingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StopManualRecording">
+      <wsdl:input message="tns:StopManualRecordingSoapIn" />
+      <wsdl:output message="tns:StopManualRecordingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RecorderCommandServiceSoap" type="tns:RecorderCommandServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveAbsolute">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZMoveAbsolute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveRelative">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZMoveRelative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveHome">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZMoveHome" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveStart">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZMoveStart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveStop">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZMoveStop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZCenter">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZCenter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZRectangle">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZRectangle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZGetAbsolutePosition">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZGetAbsolutePosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZExtendedManualSession">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZExtendedManualSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZGetSessionInfo">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZGetSessionInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZReserveSession">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZReserveSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZReleaseSession">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZReleaseSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZActivatePatrollingSchema">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZActivatePatrollingSchema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZDeactivatePatrollingSchema">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZDeactivatePatrollingSchema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresetGetList">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PresetGetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresetMoveTo">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PresetMoveTo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresetSet">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PresetSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OutputActivate">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/OutputActivate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OutputDeactivate">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/OutputDeactivate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OutputTrigger">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/OutputTrigger" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OutputGetState">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/OutputGetState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGetTypes">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SequencesGetTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGet">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SequencesGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGetAround">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SequencesGetAround" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGetAroundWithSpan">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SequencesGetAroundWithSpan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRetentionTimeLimit">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/GetRetentionTimeLimit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimeLineInformationGet">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/TimeLineInformationGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchStart">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SmartSearchStart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchCancel">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SmartSearchCancel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchGetStatus">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SmartSearchGetStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchGetResult">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SmartSearchGetResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ControlLiveStream">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/ControlLiveStream" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetAt">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/JPEGGetAt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetAtOrBefore">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/JPEGGetAtOrBefore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetAtOrAfter">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/JPEGGetAtOrAfter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetLive">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/JPEGGetLive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InputGetState">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/InputGetState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartRecording">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/StartRecording" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDriverCommand">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SendDriverCommand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDriverCommandWithResponse">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SendDriverCommandWithResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MulticastStart">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/MulticastStart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MulticastContinue">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/MulticastContinue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MulticastStop">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/MulticastStop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsManualRecording">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/IsManualRecording" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartManualRecording">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/StartManualRecording" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopManualRecording">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/StopManualRecording" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RecorderCommandServiceSoap12" type="tns:RecorderCommandServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVersion">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/GetVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveAbsolute">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZMoveAbsolute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveRelative">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZMoveRelative" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveHome">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZMoveHome" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveStart">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZMoveStart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZMoveStop">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZMoveStop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZCenter">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZCenter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZRectangle">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZRectangle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZGetAbsolutePosition">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZGetAbsolutePosition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZExtendedManualSession">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZExtendedManualSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZGetSessionInfo">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZGetSessionInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZReserveSession">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZReserveSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZReleaseSession">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZReleaseSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZActivatePatrollingSchema">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZActivatePatrollingSchema" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PTZDeactivatePatrollingSchema">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PTZDeactivatePatrollingSchema" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresetGetList">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PresetGetList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresetMoveTo">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PresetMoveTo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PresetSet">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/PresetSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OutputActivate">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/OutputActivate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OutputDeactivate">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/OutputDeactivate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OutputTrigger">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/OutputTrigger" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OutputGetState">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/OutputGetState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGetTypes">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SequencesGetTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGet">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SequencesGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGetAround">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SequencesGetAround" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SequencesGetAroundWithSpan">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SequencesGetAroundWithSpan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRetentionTimeLimit">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/GetRetentionTimeLimit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimeLineInformationGet">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/TimeLineInformationGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchStart">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SmartSearchStart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchCancel">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SmartSearchCancel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchGetStatus">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SmartSearchGetStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmartSearchGetResult">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SmartSearchGetResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ControlLiveStream">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/ControlLiveStream" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetAt">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/JPEGGetAt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetAtOrBefore">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/JPEGGetAtOrBefore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetAtOrAfter">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/JPEGGetAtOrAfter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JPEGGetLive">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/JPEGGetLive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InputGetState">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/InputGetState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartRecording">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/StartRecording" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDriverCommand">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SendDriverCommand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendDriverCommandWithResponse">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/SendDriverCommandWithResponse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MulticastStart">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/MulticastStart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MulticastContinue">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/MulticastContinue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MulticastStop">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/MulticastStop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsManualRecording">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/IsManualRecording" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartManualRecording">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/StartManualRecording" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopManualRecording">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderCommand/StopManualRecording" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RecorderCommandService">
+    <wsdl:port name="RecorderCommandServiceSoap" binding="tns:RecorderCommandServiceSoap">
+      <soap:address location="http://localhost:7563/recordercommandservice/recordercommandservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RecorderCommandServiceSoap12" binding="tns:RecorderCommandServiceSoap12">
+      <soap12:address location="http://localhost:7563/recordercommandservice/recordercommandservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

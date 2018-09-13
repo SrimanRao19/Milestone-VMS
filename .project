@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Milestone-VMS</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.wst.common.project.facet.core.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.wst.validation.validationbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
+		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
+		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>src/RecorderCommandService.wsdl</name>
+			<type>1</type>
+			<location>C:/Program Files/Milestone/MIPSDK/WSDL/RecorderCommandService.wsdl</location>
+		</link>
+		<link>
+			<name>src/RecorderStatusService2.wsdl</name>
+			<type>1</type>
+			<location>C:/Program Files/Milestone/MIPSDK/WSDL/RecorderStatusService2.wsdl</location>
+		</link>
+		<link>
+			<name>src/ServerCommandService.wsdl</name>
+			<type>1</type>
+			<location>C:/Program Files/Milestone/MIPSDK/WSDL/ServerCommandService.wsdl</location>
+		</link>
+		<link>
+			<name>src/ServiceRegistrationService.wsdl</name>
+			<type>1</type>
+			<location>C:/Program Files/Milestone/MIPSDK/WSDL/ServiceRegistrationService.wsdl</location>
+		</link>
+	</linkedResources>
+</projectDescription>

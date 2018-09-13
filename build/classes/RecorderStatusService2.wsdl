@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://videoos.net/2/XProtectCSRecorderStatus2" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://videoos.net/2/XProtectCSRecorderStatus2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://videoos.net/2/XProtectCSRecorderStatus2">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetVersionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartStatusSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartStatusSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartStatusSessionResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StopStatusSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="statusSessionId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StopStatusSessionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SubscribeEventStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="statusSessionId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="eventIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SubscribeEventStatusResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SubscribeDeviceStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="statusSessionId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubscribeDeviceStatusResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SubscribeConfigurationStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="statusSessionId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="subscribe" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubscribeConfigurationStatusResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="statusSessionId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="millisecondsTimeout" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStatusResult" type="tns:Status" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Status">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CameraDeviceStatusArray" type="tns:ArrayOfCameraDeviceStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="InputDeviceStatusArray" type="tns:ArrayOfInputDeviceStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="OutputDeviceStatusArray" type="tns:ArrayOfOutputDeviceStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="MicrophoneDeviceStatusArray" type="tns:ArrayOfMicrophoneDeviceStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpeakerDeviceStatusArray" type="tns:ArrayOfSpeakerDeviceStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventStatusArray" type="tns:ArrayOfEventStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConfigurationChangedStatus" type="tns:ConfigurationChangedStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCameraDeviceStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CameraDeviceStatus" nillable="true" type="tns:CameraDeviceStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CameraDeviceStatus">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MediaStreamDeviceStatusBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Motion" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MediaStreamDeviceStatusBase">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DeviceStatusBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Recording" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="DbMoveInProgress" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="ErrorOverflow" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="ErrorWritingGop" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="DbRepairInProgress" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DeviceStatusBase">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:StatusBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DeviceId" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsChange" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="Started" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="Error" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="ErrorNotLicensed" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="ErrorNoConnection" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StatusBase">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConfigurationChangedStatus">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:StatusBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EventStatus">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:StatusBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="EventId" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="SourceId" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IODeviceStatusBase">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DeviceStatusBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="State" type="tns:IOState" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="IOState">
+        <s:restriction base="s:string">
+          <s:enumeration value="Activated" />
+          <s:enumeration value="Deactivated" />
+          <s:enumeration value="NotAvailable" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="OutputDeviceStatus">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:IODeviceStatusBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="InputDeviceStatus">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:IODeviceStatusBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SpeakerDeviceStatus">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MediaStreamDeviceStatusBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MicrophoneDeviceStatus">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MediaStreamDeviceStatusBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfInputDeviceStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InputDeviceStatus" nillable="true" type="tns:InputDeviceStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOutputDeviceStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OutputDeviceStatus" nillable="true" type="tns:OutputDeviceStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMicrophoneDeviceStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MicrophoneDeviceStatus" nillable="true" type="tns:MicrophoneDeviceStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSpeakerDeviceStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SpeakerDeviceStatus" nillable="true" type="tns:SpeakerDeviceStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEventStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EventStatus" nillable="true" type="tns:EventStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrentDeviceStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentDeviceStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentDeviceStatusResult" type="tns:Status" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecorderStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRecorderStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRecorderStatusResult" type="tns:AttachAndConnectionState" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AttachAndConnectionState">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AttachState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConnectionState" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRecordingStorageStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecordingStorageStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRecordingStorageStatusResult" type="tns:ArrayOfStorageStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStorageStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StorageStatus" nillable="true" type="tns:StorageStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StorageStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StorageId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Available" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsedSpaceInBytes" type="s:unsignedLong" />
+          <s:element minOccurs="1" maxOccurs="1" name="FreeSpaceInBytes" type="s:unsignedLong" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetArchiveStorageStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArchiveStorageStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArchiveStorageStatusResult" type="tns:ArrayOfStorageStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideoDeviceStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVideoDeviceStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVideoDeviceStatisticsResult" type="tns:ArrayOfVideoDeviceStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVideoDeviceStatistics">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VideoDeviceStatistics" nillable="true" type="tns:VideoDeviceStatistics" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VideoDeviceStatistics">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DeviceStatisticsBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="VideoStreamStatisticsArray" type="tns:ArrayOfVideoStreamStatistics" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DeviceStatisticsBase">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceId" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVideoStreamStatistics">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VideoStreamStatistics" nillable="true" type="tns:VideoStreamStatistics" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VideoStreamStatistics">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MediaStreamStatisticsBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ImageResolution" type="tns:Size" />
+              <s:element minOccurs="0" maxOccurs="1" name="VideoFormat" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ImageSizeInBytes" type="s:unsignedLong" />
+              <s:element minOccurs="1" maxOccurs="1" name="FPSRequested" type="s:double" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MediaStreamStatisticsBase">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StreamId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecordingStream" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LiveStream" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LiveStreamDefault" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LiveStreamRunAlways" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BPS" type="s:unsignedLong" />
+          <s:element minOccurs="1" maxOccurs="1" name="FPS" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Size">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Width" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAudioDeviceStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAudioDeviceStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAudioDeviceStatisticsResult" type="tns:ArrayOfAudioDeviceStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAudioDeviceStatistics">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AudioDeviceStatistics" nillable="true" type="tns:AudioDeviceStatistics" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AudioDeviceStatistics">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DeviceStatisticsBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AudioStreamStatisticsArray" type="tns:ArrayOfAudioStreamStatistics" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfAudioStreamStatistics">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AudioStreamStatistics" nillable="true" type="tns:AudioStreamStatistics" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AudioStreamStatistics">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MediaStreamStatisticsBase" />
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartStatusSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:StartStatusSession" />
+  </wsdl:message>
+  <wsdl:message name="StartStatusSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:StartStatusSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="StopStatusSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:StopStatusSession" />
+  </wsdl:message>
+  <wsdl:message name="StopStatusSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:StopStatusSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubscribeEventStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:SubscribeEventStatus" />
+  </wsdl:message>
+  <wsdl:message name="SubscribeEventStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:SubscribeEventStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubscribeDeviceStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:SubscribeDeviceStatus" />
+  </wsdl:message>
+  <wsdl:message name="SubscribeDeviceStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:SubscribeDeviceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubscribeConfigurationStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:SubscribeConfigurationStatus" />
+  </wsdl:message>
+  <wsdl:message name="SubscribeConfigurationStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:SubscribeConfigurationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentDeviceStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentDeviceStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentDeviceStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentDeviceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRecorderStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRecorderStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetRecorderStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRecorderStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRecordingStorageStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRecordingStorageStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetRecordingStorageStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRecordingStorageStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArchiveStorageStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArchiveStorageStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetArchiveStorageStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArchiveStorageStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVideoDeviceStatisticsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVideoDeviceStatistics" />
+  </wsdl:message>
+  <wsdl:message name="GetVideoDeviceStatisticsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVideoDeviceStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAudioDeviceStatisticsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAudioDeviceStatistics" />
+  </wsdl:message>
+  <wsdl:message name="GetAudioDeviceStatisticsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAudioDeviceStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RecorderStatusService2Soap">
+    <wsdl:operation name="GetVersion">
+      <wsdl:input message="tns:GetVersionSoapIn" />
+      <wsdl:output message="tns:GetVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartStatusSession">
+      <wsdl:input message="tns:StartStatusSessionSoapIn" />
+      <wsdl:output message="tns:StartStatusSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StopStatusSession">
+      <wsdl:input message="tns:StopStatusSessionSoapIn" />
+      <wsdl:output message="tns:StopStatusSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubscribeEventStatus">
+      <wsdl:input message="tns:SubscribeEventStatusSoapIn" />
+      <wsdl:output message="tns:SubscribeEventStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubscribeDeviceStatus">
+      <wsdl:input message="tns:SubscribeDeviceStatusSoapIn" />
+      <wsdl:output message="tns:SubscribeDeviceStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubscribeConfigurationStatus">
+      <wsdl:input message="tns:SubscribeConfigurationStatusSoapIn" />
+      <wsdl:output message="tns:SubscribeConfigurationStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <wsdl:input message="tns:GetStatusSoapIn" />
+      <wsdl:output message="tns:GetStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentDeviceStatus">
+      <wsdl:input message="tns:GetCurrentDeviceStatusSoapIn" />
+      <wsdl:output message="tns:GetCurrentDeviceStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecorderStatus">
+      <wsdl:input message="tns:GetRecorderStatusSoapIn" />
+      <wsdl:output message="tns:GetRecorderStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecordingStorageStatus">
+      <wsdl:input message="tns:GetRecordingStorageStatusSoapIn" />
+      <wsdl:output message="tns:GetRecordingStorageStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArchiveStorageStatus">
+      <wsdl:input message="tns:GetArchiveStorageStatusSoapIn" />
+      <wsdl:output message="tns:GetArchiveStorageStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoDeviceStatistics">
+      <wsdl:input message="tns:GetVideoDeviceStatisticsSoapIn" />
+      <wsdl:output message="tns:GetVideoDeviceStatisticsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAudioDeviceStatistics">
+      <wsdl:input message="tns:GetAudioDeviceStatisticsSoapIn" />
+      <wsdl:output message="tns:GetAudioDeviceStatisticsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RecorderStatusService2Soap" type="tns:RecorderStatusService2Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartStatusSession">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/StartStatusSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopStatusSession">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/StopStatusSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubscribeEventStatus">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/SubscribeEventStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubscribeDeviceStatus">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/SubscribeDeviceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubscribeConfigurationStatus">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/SubscribeConfigurationStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentDeviceStatus">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetCurrentDeviceStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecorderStatus">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetRecorderStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecordingStorageStatus">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetRecordingStorageStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArchiveStorageStatus">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetArchiveStorageStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoDeviceStatistics">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetVideoDeviceStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAudioDeviceStatistics">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetAudioDeviceStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RecorderStatusService2Soap12" type="tns:RecorderStatusService2Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVersion">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartStatusSession">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/StartStatusSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopStatusSession">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/StopStatusSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubscribeEventStatus">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/SubscribeEventStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubscribeDeviceStatus">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/SubscribeDeviceStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubscribeConfigurationStatus">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/SubscribeConfigurationStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentDeviceStatus">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetCurrentDeviceStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecorderStatus">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetRecorderStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecordingStorageStatus">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetRecordingStorageStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArchiveStorageStatus">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetArchiveStorageStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideoDeviceStatistics">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetVideoDeviceStatistics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAudioDeviceStatistics">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSRecorderStatus2/GetAudioDeviceStatistics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RecorderStatusService2">
+    <wsdl:port name="RecorderStatusService2Soap" binding="tns:RecorderStatusService2Soap">
+      <soap:address location="http://10.10.16.70:7563/recorderstatusservice/recorderstatusservice2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RecorderStatusService2Soap12" binding="tns:RecorderStatusService2Soap12">
+      <soap12:address location="http://10.10.16.70:7563/recorderstatusservice/recorderstatusservice2.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://videoos.net/2/XProtectCSServiceRegistration" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://videoos.net/2/XProtectCSServiceRegistration" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://videoos.net/2/XProtectCSServiceRegistration">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="RegisterService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="instance" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="uri" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegisterServiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnregisterService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="instance" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnregisterServiceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="EnableService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="instance" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="enabled" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnableServiceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServices">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServicesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServicesResult" type="tns:ArrayOfServiceInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfServiceInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServiceInfo" nillable="true" type="tns:ServiceInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="type" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="instance" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="uri" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="trusted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="enabled" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetServicesIncludingDisabled">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServicesIncludingDisabledResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServicesIncludingDisabledResult" type="tns:ArrayOfServiceInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetServiceData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="instance" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="customData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetServiceDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetServiceDataResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiceData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="instance" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiceDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiceDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegisterServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterService" />
+  </wsdl:message>
+  <wsdl:message name="RegisterServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnregisterServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:UnregisterService" />
+  </wsdl:message>
+  <wsdl:message name="UnregisterServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:UnregisterServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnableServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:EnableService" />
+  </wsdl:message>
+  <wsdl:message name="EnableServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:EnableServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServices" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesIncludingDisabledSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServicesIncludingDisabled" />
+  </wsdl:message>
+  <wsdl:message name="GetServicesIncludingDisabledSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServicesIncludingDisabledResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetServiceDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SetServiceData" />
+  </wsdl:message>
+  <wsdl:message name="SetServiceDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SetServiceDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiceData" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceRegistrationServiceSoap">
+    <wsdl:operation name="RegisterService">
+      <wsdl:input message="tns:RegisterServiceSoapIn" />
+      <wsdl:output message="tns:RegisterServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterService">
+      <wsdl:input message="tns:UnregisterServiceSoapIn" />
+      <wsdl:output message="tns:UnregisterServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableService">
+      <wsdl:input message="tns:EnableServiceSoapIn" />
+      <wsdl:output message="tns:EnableServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <wsdl:input message="tns:GetServicesSoapIn" />
+      <wsdl:output message="tns:GetServicesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServicesIncludingDisabled">
+      <wsdl:input message="tns:GetServicesIncludingDisabledSoapIn" />
+      <wsdl:output message="tns:GetServicesIncludingDisabledSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetServiceData">
+      <wsdl:input message="tns:SetServiceDataSoapIn" />
+      <wsdl:output message="tns:SetServiceDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceData">
+      <wsdl:input message="tns:GetServiceDataSoapIn" />
+      <wsdl:output message="tns:GetServiceDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceRegistrationServiceSoap" type="tns:ServiceRegistrationServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterService">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/RegisterService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterService">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/UnregisterService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableService">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/EnableService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/GetServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServicesIncludingDisabled">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/GetServicesIncludingDisabled" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetServiceData">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/SetServiceData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceData">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/GetServiceData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceRegistrationServiceSoap1" type="tns:ServiceRegistrationServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterService">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/RegisterService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterService">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/UnregisterService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableService">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/EnableService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/GetServices" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServicesIncludingDisabled">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/GetServicesIncludingDisabled" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetServiceData">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/SetServiceData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceData">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServiceRegistration/GetServiceData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceRegistrationService">
+    <wsdl:port name="ServiceRegistrationServiceSoap" binding="tns:ServiceRegistrationServiceSoap">
+      <soap:address location="http://10.10.16.70/ServerAPI/ServiceRegistrationService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceRegistrationServiceSoap1" binding="tns:ServiceRegistrationServiceSoap1">
+      <soap12:address location="http://10.10.16.70/ServerAPI/ServiceRegistrationService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

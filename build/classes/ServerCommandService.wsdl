@@ -1,0 +1,3221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://videoos.net/2/XProtectCSServerCommand" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://videoos.net/2/XProtectCSServerCommand" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://videoos.net/2/XProtectCSServerCommand">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetVersionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServerVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServerVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServerVersionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProductInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductInfoResult" type="tns:ProductInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProductInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductLine" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="VendorId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubProduct" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="MajorVersion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MinorVersion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceVersion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuildConfiguration" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuildNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BuildDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSystemLicenseInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSystemLicenseInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSystemLicenseInfoResult" type="tns:SystemLicenseInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SystemLicenseInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="HasLicense" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTrialLicense" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SLC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductSku" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Expires" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Features" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSmartClientVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSmartClientVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSmartClientVersionResult" type="tns:SmartClientVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SmartClientVersion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Major" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Minor" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Revision" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Beta" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ForceUpgrade" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpgradeInfo" type="tns:UpgradeInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UpgradeInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Hostname" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Port" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckSmartClientVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="major" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="minor" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="revision" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckSmartClientVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckSmartClientVersionResult" type="tns:SmartClientVersion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsOnline">
+        <s:complexType />
+      </s:element>
+      <s:element name="IsOnlineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsOnlineResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="instanceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentToken" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:LoginInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RegistrationTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeToLive" type="tns:TimeDuration" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeToLiveLimited" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TimeDuration">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MicroSeconds" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Logout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="instanceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentToken" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogoutResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserInfoResult" type="tns:UserInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sid" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetConfiguration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConfigurationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConfigurationResult" type="tns:ConfigurationInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConfigurationInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ServerId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServerDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServerOptions" type="tns:ArrayOfServerOption" />
+          <s:element minOccurs="0" maxOccurs="1" name="Recorders" type="tns:ArrayOfRecorderInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationAccess" type="tns:ApplicationSecurityInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="FailoverCheckInterval" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Licenses" type="tns:ArrayOfLicenseInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceMappings" type="tns:ArrayOfDeviceMappingInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="CameraGroups" type="tns:ArrayOfCameraGroupInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="InputGroups" type="tns:ArrayOfInputGroupInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="OutputGroups" type="tns:ArrayOfOutputGroupInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="MicrophoneGroups" type="tns:ArrayOfMicrophoneGroupInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpeakerGroups" type="tns:ArrayOfSpeakerGroupInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="MetadataDeviceGroups" type="tns:ArrayOfMetadataDeviceGroupInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventTypeGroups" type="tns:ArrayOfEventTypeGroupInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventTypes" type="tns:ArrayOfEventTypeInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemEventTypes" type="tns:ArrayOfSystemEventTypeInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertTypeGroups" type="tns:ArrayOfAlertTypeGroupInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertTypes" type="tns:ArrayOfAlertTypeInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="MatrixMonitors" type="tns:ArrayOfMatrixMonitorInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="BookmarkSettings" type="tns:BookmarkSettingInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="RetentionSettings" type="tns:RetentionSettingInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfServerOption">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServerOption" nillable="true" type="tns:ServerOption" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServerOption">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRecorderInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RecorderInfo" nillable="true" type="tns:RecorderInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RecorderInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RecorderId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServiceId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HostName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebServerUri" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeZoneName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultRecordingTimeSeconds" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="XmlEncoding" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModified" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cameras" type="tns:ArrayOfCameraInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Inputs" type="tns:ArrayOfInputInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Outputs" type="tns:ArrayOfOutputInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Microphones" type="tns:ArrayOfMicrophoneInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Speakers" type="tns:ArrayOfSpeakerInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="MetadataDevices" type="tns:ArrayOfMetadataDeviceInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hardware" type="tns:ArrayOfHardwareInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCameraInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CameraInfo" nillable="true" type="tns:CameraInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CameraInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DeviceInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaxFPS" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="BrowsableStream" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Streams" type="tns:ArrayOfStreamInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="Tracks" type="tns:ArrayOfTrackInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="CameraSecurity" type="tns:CameraSecurityInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="PtzSettings" type="tns:PtzInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="IpixSettings" type="tns:IpixInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="PanoramicLensSettings" type="tns:PanoramicLensInfo" />
+              <s:element minOccurs="1" maxOccurs="1" name="MulticastEnabled" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="EdgeStorageSupported" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="EdgeStoragePlayback" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="StopManualRecordingSeconds" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DeviceInfo" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RecorderId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="HardwareId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shortcut" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceIndex" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MetadataDeviceInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DeviceInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Tracks" type="tns:ArrayOfTrackInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="MetadataDeviceSecurity" type="tns:MetadataDeviceSecurityInfo" />
+              <s:element minOccurs="1" maxOccurs="1" name="MulticastEnabled" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="EdgeStorageSupported" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="EdgeStoragePlayback" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="MetadataTypes" type="tns:ArrayOfMetadataTypeInfo" />
+              <s:element minOccurs="1" maxOccurs="1" name="StopManualRecordingSeconds" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfTrackInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TrackInfo" nillable="true" type="tns:TrackInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TrackInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TrackId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Edge" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MetadataDeviceSecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Live" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Browse" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetSequences" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExportDatabase" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetrieveEdgeRecordings" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartRecording" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StopRecording" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionView" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionCreate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionRemove" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMetadataTypeInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MetadataTypeInfo" nillable="true" type="tns:MetadataTypeInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MetadataTypeInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DisplayId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidTime" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SpeakerInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DeviceInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Tracks" type="tns:ArrayOfTrackInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="SpeakerSecurity" type="tns:SpeakerSecurityInfo" />
+              <s:element minOccurs="1" maxOccurs="1" name="MulticastEnabled" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="EdgeStorageSupported" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="EdgeStoragePlayback" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="StopManualRecordingSeconds" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SpeakerSecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Live" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Browse" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speak" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetSequences" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExportDatabase" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkView" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkAdd" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkEdit" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionView" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionCreate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionRemove" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetrieveEdgeRecordings" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartRecording" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StopRecording" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MicrophoneInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DeviceInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Tracks" type="tns:ArrayOfTrackInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="MicrophoneSecurity" type="tns:MicrophoneSecurityInfo" />
+              <s:element minOccurs="1" maxOccurs="1" name="MulticastEnabled" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="EdgeStorageSupported" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="EdgeStoragePlayback" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="StopManualRecordingSeconds" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MicrophoneSecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Live" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Browse" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetSequences" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExportDatabase" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkView" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkAdd" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkEdit" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionView" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionCreate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionRemove" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetrieveEdgeRecordings" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartRecording" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StopRecording" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OutputInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DeviceInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OutputSecurity" type="tns:OutputSecurityInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OutputSecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Activate" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InputInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DeviceInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="InputSecurity" type="tns:InputSecurityInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="InputSecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ReadInput" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfStreamInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StreamInfo" nillable="true" type="tns:StreamInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StreamInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StreamId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Default" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CameraSecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Live" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Browse" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExportAvi" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExportJpeg" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SmartSearch" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetSequences" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExportDatabase" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartRecording" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StopRecording" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PtzSecurity" type="tns:PtzSecurityInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkView" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkAdd" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkEdit" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BookmarkDelete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionView" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionCreate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionRemove" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ManagePresets" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ManagePatrollingProfiles" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ManagePresetLocks" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetrieveEdgeRecordings" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PtzSecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ManualControl" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PresetControl" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReserveControl" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PtzInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PtzEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Presets" type="tns:ArrayOfPresetInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Capabilities" type="tns:ArrayOfCapabilityInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCenterOnPositionInViewSupported" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPtzCenterAndZoomToRectangleSupported" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPtzHomeSupported" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPtzDiagonalSupported" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="EditPreset" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPresetInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PresetInfo" nillable="true" type="tns:PresetInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PresetInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Position" type="tns:PositionInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shortcut" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Locked" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PositionInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Pan" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tilt" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Zoom" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCapabilityInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CapabilityInfo" nillable="true" type="tns:CapabilityInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CapabilityInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CapabilityId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Absolute" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Relative" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Start" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Stop" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Automatic" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IpixInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IpixEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hemisphere" type="tns:HemisphereInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Homeposition" type="tns:PositionInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="CeilingMounted" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HemisphereInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RadiusX" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="RadiusY" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CenterX" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CenterY" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PanoramicLensInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PanoramicLensEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PanoramicLensType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CameraMount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImmerVision" type="tns:ImmerVisionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ImmerVisionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LensProfileRpl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LensProfileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LensProfileData" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInputInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InputInfo" nillable="true" type="tns:InputInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOutputInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OutputInfo" nillable="true" type="tns:OutputInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMicrophoneInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MicrophoneInfo" nillable="true" type="tns:MicrophoneInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSpeakerInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SpeakerInfo" nillable="true" type="tns:SpeakerInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMetadataDeviceInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MetadataDeviceInfo" nillable="true" type="tns:MetadataDeviceInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfHardwareInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HardwareInfo" nillable="true" type="tns:HardwareInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HardwareInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="HardwareId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceIds" type="tns:ArrayOfGuid" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecorderId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Uri" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Interconnected" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModified" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApplicationSecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SmartClientSecurity" type="tns:SmartClientSecurityInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SmartClientSecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SmartClientLive" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SmartClientBrowse" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SmartClientSetup" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SmartClientReport" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLicenseInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LicenseInfo" nillable="true" type="tns:LicenseInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LicenseInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LicenseId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDeviceMappingInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeviceMappingInfo" nillable="true" type="tns:DeviceMappingInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeviceMappingInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceA" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceB" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCameraGroupInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CameraGroupInfo" nillable="true" type="tns:CameraGroupInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CameraGroupInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GroupInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CameraGroups" type="tns:ArrayOfCameraGroupInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="Cameras" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GroupInfo" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GroupId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AlertTypeGroupInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GroupInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AlertTypeGroups" type="tns:ArrayOfAlertTypeGroupInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="AlertTypes" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfAlertTypeGroupInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AlertTypeGroupInfo" nillable="true" type="tns:AlertTypeGroupInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EventTypeGroupInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GroupInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EventTypeGroups" type="tns:ArrayOfEventTypeGroupInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="EventTypes" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfEventTypeGroupInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EventTypeGroupInfo" nillable="true" type="tns:EventTypeGroupInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MetadataDeviceGroupInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GroupInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="MetadataDeviceGroups" type="tns:ArrayOfMetadataDeviceGroupInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="MetadataDevices" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfMetadataDeviceGroupInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MetadataDeviceGroupInfo" nillable="true" type="tns:MetadataDeviceGroupInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SpeakerGroupInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GroupInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SpeakerGroups" type="tns:ArrayOfSpeakerGroupInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="Speakers" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfSpeakerGroupInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SpeakerGroupInfo" nillable="true" type="tns:SpeakerGroupInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MicrophoneGroupInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GroupInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="MicrophoneGroups" type="tns:ArrayOfMicrophoneGroupInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="Microphones" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfMicrophoneGroupInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MicrophoneGroupInfo" nillable="true" type="tns:MicrophoneGroupInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OutputGroupInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GroupInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OutputGroups" type="tns:ArrayOfOutputGroupInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="Outputs" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfOutputGroupInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OutputGroupInfo" nillable="true" type="tns:OutputGroupInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InputGroupInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GroupInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="InputGroups" type="tns:ArrayOfInputGroupInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="Inputs" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfInputGroupInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InputGroupInfo" nillable="true" type="tns:InputGroupInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEventTypeInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EventTypeInfo" nillable="true" type="tns:EventTypeInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EventTypeInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EventTypeId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSystemEventTypeInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SystemEventTypeInfo" nillable="true" type="tns:SystemEventTypeInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SystemEventTypeInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EventTypeId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EventSource" type="tns:EventSource" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EventSource">
+        <s:restriction base="s:string">
+          <s:enumeration value="Undefined" />
+          <s:enumeration value="Device" />
+          <s:enumeration value="External" />
+          <s:enumeration value="Hardware" />
+          <s:enumeration value="Recorder" />
+          <s:enumeration value="Server" />
+          <s:enumeration value="System" />
+          <s:enumeration value="Timer" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfAlertTypeInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AlertTypeInfo" nillable="true" type="tns:AlertTypeInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AlertTypeInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AlertTypeId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMatrixMonitorInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MatrixMonitorInfo" nillable="true" type="tns:MatrixMonitorInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MatrixMonitorInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MatrixMonitorId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BookmarkSettingInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultPreTimeSec" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultPostTimeSec" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RetentionSettingInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RetentionOptions" type="tns:ArrayOfRetentionOption" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRetentionOption">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RetentionOption" nillable="true" type="tns:RetentionOption" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RetentionOption">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionUnits" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionOptionType" type="tns:RetentionOptionType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="RetentionOptionType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unused" />
+          <s:enumeration value="Days" />
+          <s:enumeration value="Weeks" />
+          <s:enumeration value="Months" />
+          <s:enumeration value="Years" />
+          <s:enumeration value="UserDefined" />
+          <s:enumeration value="Indefinite" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetConfigurationRecorders">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recorderIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConfigurationRecordersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConfigurationRecordersResult" type="tns:ArrayOfRecorderInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConfigurationHardware">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hardwareIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConfigurationHardwareResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConfigurationHardwareResult" type="tns:ArrayOfHardwareInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDevicesDisabled">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDevicesDisabledResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDevicesDisabledResult" type="tns:ArrayOfDeviceDisabledInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDeviceDisabledInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeviceDisabledInfo" nillable="true" type="tns:DeviceDisabledInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeviceDisabledInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RecorderId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="HardwareId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVmoServicesList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVmoServicesListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVmoServicesListResult" type="tns:ArrayOfDictionaryEntry" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDictionaryEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DictionaryEntry" type="tns:DictionaryEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DictionaryEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetViewGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ViewGroupInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ViewGroupType" type="tns:ViewGroupType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadOnly" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModifiedTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastModifiedUser" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ViewGroupType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Normal" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfViewGroupInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ViewGroupInfo" nillable="true" type="tns:ViewGroupInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetViewGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetViewGroupsResult" type="tns:ArrayOfViewGroupInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetViewGroupData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="viewGroupId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ViewGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ViewGroupInfo" type="tns:ViewGroupInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="ViewGroupData" type="tns:ViewGroupData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ViewGroupData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DataVersion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="XmlVersion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ViewGroupDataXml">
+            <s:complexType mixed="true">
+              <s:sequence>
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetViewGroupDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetViewGroupDataResult" type="tns:ViewGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetViewGroupData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="viewGroupId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="viewGroupdata" type="tns:ViewGroupData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetViewGroupDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetViewGroupDataResult" type="tns:SetViewGroupDataResultType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="SetViewGroupDataResultType">
+        <s:restriction base="s:string">
+          <s:enumeration value="UnspecifiedError" />
+          <s:enumeration value="Success" />
+          <s:enumeration value="ReadOnlyError" />
+          <s:enumeration value="ModifiedError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetCustomSettingDataGlobal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="customSettingId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CustomSetting">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CustomSettingInfo" type="tns:CustomSettingInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomSettingData" type="tns:CustomSettingData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomSettingInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModifiedTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastModifiedUser" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CustomSettingData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DataVersion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomSettingDataXml">
+            <s:complexType mixed="true">
+              <s:sequence>
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomSettingDataGlobalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomSettingDataGlobalResult" type="tns:CustomSetting" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomSettingDataUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="customSettingId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomSettingDataUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomSettingDataUserResult" type="tns:CustomSetting" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCustomSettingDataGlobal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="customSettingId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="customSettingData" type="tns:CustomSettingData" />
+            <s:element minOccurs="1" maxOccurs="1" name="forceOverride" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCustomSettingDataGlobalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetCustomSettingDataGlobalResult" type="tns:SetCustomSettingResultType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="SetCustomSettingResultType">
+        <s:restriction base="s:string">
+          <s:enumeration value="UnspecifiedError" />
+          <s:enumeration value="Success" />
+          <s:enumeration value="ModifiedError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SetCustomSettingDataUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="customSettingId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="customSettingData" type="tns:CustomSettingData" />
+            <s:element minOccurs="1" maxOccurs="1" name="forceOverride" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCustomSettingDataUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetCustomSettingDataUserResult" type="tns:SetCustomSettingResultType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventTrigger">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EventTriggerResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="EventTriggerWithMetadata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="eventId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="metadata" type="tns:ArrayOfKeyValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfKeyValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="KeyValue" nillable="true" type="tns:KeyValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="KeyValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EventTriggerWithMetadataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AlertsGetAroundWithSpan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="alertIds" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="centerTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="maxTimeBefore" type="tns:TimeDuration" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxCountBefore" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="maxTimeAfter" type="tns:TimeDuration" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxCountAfter" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AlertOccurrence">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AlertId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAlertOccurrence">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AlertOccurrence" nillable="true" type="tns:AlertOccurrence" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AlertsGetAroundWithSpanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AlertsGetAroundWithSpanResult" type="tns:ArrayOfAlertOccurrence" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MatrixMonitorActivateCamera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="matrixMonitorId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MatrixMonitorActivateCameraResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueryChanges">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="changesFrom" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Change">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ChangeType" type="tns:ChangeType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChangeType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Recorder" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hardware" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfChange">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Change" nillable="true" type="tns:Change" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryChangesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryChangesResult" type="tns:ArrayOfChange" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryRecorderInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="recorderId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryRecorderInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryRecorderInfoResult" type="tns:RecorderInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookmarkGetNewReference">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="live" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BookmarkReference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BookmarkGetNewReferenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookmarkGetNewReferenceResult" type="tns:BookmarkReference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookmarkCreate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeBegin" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeTrigged" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeEnd" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="header" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Bookmark">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Header" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeBegin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeTrigged" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeEnd" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BookmarkCreateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookmarkCreateResult" type="tns:Bookmark" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookmarkUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bookmarkId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeBegin" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeTrigged" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeEnd" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="header" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookmarkUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookmarkUpdateResult" type="tns:Bookmark" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookmarkDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bookmarkId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookmarkDeleteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BookmarkGet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bookmarkId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookmarkGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookmarkGetResult" type="tns:Bookmark" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookmarkSearchTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="time" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="timeLimit" type="tns:TimeDuration" />
+            <s:element minOccurs="1" maxOccurs="1" name="countLimit" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceTypes" type="tns:ArrayOfMediaDeviceType" />
+            <s:element minOccurs="0" maxOccurs="1" name="optDeviceIds" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="optUsers" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="optSearchStr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMediaDeviceType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MediaDeviceType" type="tns:MediaDeviceType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="MediaDeviceType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Camera" />
+          <s:enumeration value="Microphone" />
+          <s:enumeration value="Speaker" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfBookmark">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Bookmark" nillable="true" type="tns:Bookmark" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BookmarkSearchTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookmarkSearchTimeResult" type="tns:ArrayOfBookmark" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookmarkSearchFromBookmark">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromBookmarkId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="timeLimit" type="tns:TimeDuration" />
+            <s:element minOccurs="1" maxOccurs="1" name="countLimit" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceTypes" type="tns:ArrayOfMediaDeviceType" />
+            <s:element minOccurs="0" maxOccurs="1" name="optDeviceIds" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="optUsers" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="optSearchStr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookmarkSearchFromBookmarkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookmarkSearchFromBookmarkResult" type="tns:ArrayOfBookmark" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuerySystemMonitorStateSourcesByIds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ids" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SystemMonitorStateSource">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSystemMonitorStateSource">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SystemMonitorStateSource" nillable="true" type="tns:SystemMonitorStateSource" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QuerySystemMonitorStateSourcesByIdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuerySystemMonitorStateSourcesByIdsResult" type="tns:ArrayOfSystemMonitorStateSource" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuerySystemMonitorStateSourcesByTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="types" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuerySystemMonitorStateSourcesByTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuerySystemMonitorStateSourcesByTypesResult" type="tns:ArrayOfSystemMonitorStateSource" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarkedDataGetNewReference">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="live" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MarkedDataReference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MarkedDataGetNewReferenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MarkedDataGetNewReferenceResult" type="tns:MarkedDataReference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarkedDataCreate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="markedDataId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeStart" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeTag" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeEnd" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="header" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="markedDataType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="useRetention" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="retentionExpire" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="retentionOption" type="tns:RetentionOption" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MarkedDataResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MarkedData" type="tns:MarkedData" />
+          <s:element minOccurs="0" maxOccurs="1" name="FaultDevices" type="tns:ArrayOfFaultDevice" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:ResultStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MarkedData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceIds" type="tns:ArrayOfGuid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Created" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModified" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Header" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TagTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UseRetention" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionExpire" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionSize" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="RetentionOption" type="tns:RetentionOption" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFaultDevice">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FaultDevice" nillable="true" type="tns:FaultDevice" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FaultDevice">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ResultStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Undefined" />
+          <s:enumeration value="Success" />
+          <s:enumeration value="Failed" />
+          <s:enumeration value="PartlySuccess" />
+          <s:enumeration value="MarkedDataNotFound" />
+          <s:enumeration value="FeatureNotLicensed" />
+          <s:enumeration value="RecorderNotFound" />
+          <s:enumeration value="ManagementServerUnavailable" />
+          <s:enumeration value="Unauthorized" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="MarkedDataCreateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MarkedDataCreateResult" type="tns:MarkedDataResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarkedDataUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="markedDataId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeStart" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeTag" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeEnd" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="header" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="markedDataType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="useRetention" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="retentionExpire" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="retentionOption" type="tns:RetentionOption" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarkedDataUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MarkedDataUpdateResult" type="tns:MarkedDataResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarkedDataDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="markedDataIds" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMarkedDataResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MarkedDataResult" nillable="true" type="tns:MarkedDataResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MarkedDataDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MarkedDataDeleteResult" type="tns:ArrayOfMarkedDataResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarkedDataGet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="markedDataId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarkedDataGetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MarkedDataGetResult" type="tns:MarkedData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarkedDataSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceIds" type="tns:ArrayOfGuid" />
+            <s:element minOccurs="0" maxOccurs="1" name="searchText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="users" type="tns:ArrayOfString" />
+            <s:element minOccurs="1" maxOccurs="1" name="createdFromTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="createdToTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="markedDataFromTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="markedDataToTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="tagTimeFromTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="tagTimeToTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="retentionExpireFrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="retentionExpireTo" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortOrder" type="tns:SortOrderOption" />
+            <s:element minOccurs="1" maxOccurs="1" name="sortAscending" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="SortOrderOption">
+        <s:restriction base="s:string">
+          <s:enumeration value="Header" />
+          <s:enumeration value="Description" />
+          <s:enumeration value="StartTime" />
+          <s:enumeration value="TagTime" />
+          <s:enumeration value="EndTime" />
+          <s:enumeration value="CreateTime" />
+          <s:enumeration value="RetentionExpireTime" />
+          <s:enumeration value="UserName" />
+          <s:enumeration value="Size" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfMarkedData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MarkedData" nillable="true" type="tns:MarkedData" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MarkedDataSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MarkedDataSearchResult" type="tns:ArrayOfMarkedData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="withSetting" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ClientProfile">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModified" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SettingsLastModified" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientProfileSettings" type="tns:ArrayOfClientProfileSetting" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfClientProfileSetting">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClientProfileSetting" nillable="true" type="tns:ClientProfileSetting" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ClientProfileSetting">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Locked" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetClientProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClientProfileResult" type="tns:ClientProfile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPresets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPresetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPresetsResult" type="tns:ArrayOfPresetInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePreset">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePresetResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdatePresetName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="newName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePresetNameResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdatePresetPosition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePresetPositionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreatePreset">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePresetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreatePresetResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrderPresets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deviceId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="ids" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrderPresetsResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetServerVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProductInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProductInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetProductInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemLicenseInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSystemLicenseInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemLicenseInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSystemLicenseInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSmartClientVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSmartClientVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetSmartClientVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSmartClientVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckSmartClientVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckSmartClientVersion" />
+  </wsdl:message>
+  <wsdl:message name="CheckSmartClientVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckSmartClientVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsOnlineSoapIn">
+    <wsdl:part name="parameters" element="tns:IsOnline" />
+  </wsdl:message>
+  <wsdl:message name="IsOnlineSoapOut">
+    <wsdl:part name="parameters" element="tns:IsOnlineResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapIn">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="LogoutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationRecordersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConfigurationRecorders" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationRecordersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConfigurationRecordersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationHardwareSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConfigurationHardware" />
+  </wsdl:message>
+  <wsdl:message name="GetConfigurationHardwareSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConfigurationHardwareResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDevicesDisabledSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDevicesDisabled" />
+  </wsdl:message>
+  <wsdl:message name="GetDevicesDisabledSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDevicesDisabledResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVmoServicesListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVmoServicesList" />
+  </wsdl:message>
+  <wsdl:message name="GetVmoServicesListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVmoServicesListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetViewGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetViewGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetViewGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetViewGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetViewGroupDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetViewGroupData" />
+  </wsdl:message>
+  <wsdl:message name="GetViewGroupDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetViewGroupDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetViewGroupDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SetViewGroupData" />
+  </wsdl:message>
+  <wsdl:message name="SetViewGroupDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SetViewGroupDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomSettingDataGlobalSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomSettingDataGlobal" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomSettingDataGlobalSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomSettingDataGlobalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomSettingDataUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomSettingDataUser" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomSettingDataUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomSettingDataUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCustomSettingDataGlobalSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCustomSettingDataGlobal" />
+  </wsdl:message>
+  <wsdl:message name="SetCustomSettingDataGlobalSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCustomSettingDataGlobalResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCustomSettingDataUserSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCustomSettingDataUser" />
+  </wsdl:message>
+  <wsdl:message name="SetCustomSettingDataUserSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCustomSettingDataUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventTriggerSoapIn">
+    <wsdl:part name="parameters" element="tns:EventTrigger" />
+  </wsdl:message>
+  <wsdl:message name="EventTriggerSoapOut">
+    <wsdl:part name="parameters" element="tns:EventTriggerResponse" />
+  </wsdl:message>
+  <wsdl:message name="EventTriggerWithMetadataSoapIn">
+    <wsdl:part name="parameters" element="tns:EventTriggerWithMetadata" />
+  </wsdl:message>
+  <wsdl:message name="EventTriggerWithMetadataSoapOut">
+    <wsdl:part name="parameters" element="tns:EventTriggerWithMetadataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AlertsGetAroundWithSpanSoapIn">
+    <wsdl:part name="parameters" element="tns:AlertsGetAroundWithSpan" />
+  </wsdl:message>
+  <wsdl:message name="AlertsGetAroundWithSpanSoapOut">
+    <wsdl:part name="parameters" element="tns:AlertsGetAroundWithSpanResponse" />
+  </wsdl:message>
+  <wsdl:message name="MatrixMonitorActivateCameraSoapIn">
+    <wsdl:part name="parameters" element="tns:MatrixMonitorActivateCamera" />
+  </wsdl:message>
+  <wsdl:message name="MatrixMonitorActivateCameraSoapOut">
+    <wsdl:part name="parameters" element="tns:MatrixMonitorActivateCameraResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryChangesSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryChanges" />
+  </wsdl:message>
+  <wsdl:message name="QueryChangesSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryChangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryRecorderInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryRecorderInfo" />
+  </wsdl:message>
+  <wsdl:message name="QueryRecorderInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryRecorderInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkGetNewReferenceSoapIn">
+    <wsdl:part name="parameters" element="tns:BookmarkGetNewReference" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkGetNewReferenceSoapOut">
+    <wsdl:part name="parameters" element="tns:BookmarkGetNewReferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkCreateSoapIn">
+    <wsdl:part name="parameters" element="tns:BookmarkCreate" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkCreateSoapOut">
+    <wsdl:part name="parameters" element="tns:BookmarkCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:BookmarkUpdate" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:BookmarkUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:BookmarkDelete" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:BookmarkDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkGetSoapIn">
+    <wsdl:part name="parameters" element="tns:BookmarkGet" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkGetSoapOut">
+    <wsdl:part name="parameters" element="tns:BookmarkGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkSearchTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:BookmarkSearchTime" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkSearchTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:BookmarkSearchTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkSearchFromBookmarkSoapIn">
+    <wsdl:part name="parameters" element="tns:BookmarkSearchFromBookmark" />
+  </wsdl:message>
+  <wsdl:message name="BookmarkSearchFromBookmarkSoapOut">
+    <wsdl:part name="parameters" element="tns:BookmarkSearchFromBookmarkResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuerySystemMonitorStateSourcesByIdsSoapIn">
+    <wsdl:part name="parameters" element="tns:QuerySystemMonitorStateSourcesByIds" />
+  </wsdl:message>
+  <wsdl:message name="QuerySystemMonitorStateSourcesByIdsSoapOut">
+    <wsdl:part name="parameters" element="tns:QuerySystemMonitorStateSourcesByIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuerySystemMonitorStateSourcesByTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:QuerySystemMonitorStateSourcesByTypes" />
+  </wsdl:message>
+  <wsdl:message name="QuerySystemMonitorStateSourcesByTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:QuerySystemMonitorStateSourcesByTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataGetNewReferenceSoapIn">
+    <wsdl:part name="parameters" element="tns:MarkedDataGetNewReference" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataGetNewReferenceSoapOut">
+    <wsdl:part name="parameters" element="tns:MarkedDataGetNewReferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataCreateSoapIn">
+    <wsdl:part name="parameters" element="tns:MarkedDataCreate" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataCreateSoapOut">
+    <wsdl:part name="parameters" element="tns:MarkedDataCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:MarkedDataUpdate" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:MarkedDataUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataDeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:MarkedDataDelete" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataDeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:MarkedDataDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataGetSoapIn">
+    <wsdl:part name="parameters" element="tns:MarkedDataGet" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataGetSoapOut">
+    <wsdl:part name="parameters" element="tns:MarkedDataGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:MarkedDataSearch" />
+  </wsdl:message>
+  <wsdl:message name="MarkedDataSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:MarkedDataSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClientProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientProfile" />
+  </wsdl:message>
+  <wsdl:message name="GetClientProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPresetsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPresets" />
+  </wsdl:message>
+  <wsdl:message name="GetPresetsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPresetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePresetSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePreset" />
+  </wsdl:message>
+  <wsdl:message name="DeletePresetSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePresetResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePresetNameSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePresetName" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePresetNameSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePresetNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePresetPositionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePresetPosition" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePresetPositionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePresetPositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreatePresetSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePreset" />
+  </wsdl:message>
+  <wsdl:message name="CreatePresetSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePresetResponse" />
+  </wsdl:message>
+  <wsdl:message name="OrderPresetsSoapIn">
+    <wsdl:part name="parameters" element="tns:OrderPresets" />
+  </wsdl:message>
+  <wsdl:message name="OrderPresetsSoapOut">
+    <wsdl:part name="parameters" element="tns:OrderPresetsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServerCommandServiceSoap">
+    <wsdl:operation name="GetVersion">
+      <wsdl:input message="tns:GetVersionSoapIn" />
+      <wsdl:output message="tns:GetVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerVersion">
+      <wsdl:input message="tns:GetServerVersionSoapIn" />
+      <wsdl:output message="tns:GetServerVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductInfo">
+      <wsdl:input message="tns:GetProductInfoSoapIn" />
+      <wsdl:output message="tns:GetProductInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemLicenseInfo">
+      <wsdl:input message="tns:GetSystemLicenseInfoSoapIn" />
+      <wsdl:output message="tns:GetSystemLicenseInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSmartClientVersion">
+      <wsdl:input message="tns:GetSmartClientVersionSoapIn" />
+      <wsdl:output message="tns:GetSmartClientVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckSmartClientVersion">
+      <wsdl:input message="tns:CheckSmartClientVersionSoapIn" />
+      <wsdl:output message="tns:CheckSmartClientVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsOnline">
+      <wsdl:input message="tns:IsOnlineSoapIn" />
+      <wsdl:output message="tns:IsOnlineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input message="tns:LogoutSoapIn" />
+      <wsdl:output message="tns:LogoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <wsdl:input message="tns:GetUserInfoSoapIn" />
+      <wsdl:output message="tns:GetUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguration">
+      <wsdl:input message="tns:GetConfigurationSoapIn" />
+      <wsdl:output message="tns:GetConfigurationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationRecorders">
+      <wsdl:input message="tns:GetConfigurationRecordersSoapIn" />
+      <wsdl:output message="tns:GetConfigurationRecordersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationHardware">
+      <wsdl:input message="tns:GetConfigurationHardwareSoapIn" />
+      <wsdl:output message="tns:GetConfigurationHardwareSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDevicesDisabled">
+      <wsdl:input message="tns:GetDevicesDisabledSoapIn" />
+      <wsdl:output message="tns:GetDevicesDisabledSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVmoServicesList">
+      <wsdl:input message="tns:GetVmoServicesListSoapIn" />
+      <wsdl:output message="tns:GetVmoServicesListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViewGroups">
+      <wsdl:input message="tns:GetViewGroupsSoapIn" />
+      <wsdl:output message="tns:GetViewGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViewGroupData">
+      <wsdl:input message="tns:GetViewGroupDataSoapIn" />
+      <wsdl:output message="tns:GetViewGroupDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetViewGroupData">
+      <wsdl:input message="tns:SetViewGroupDataSoapIn" />
+      <wsdl:output message="tns:SetViewGroupDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomSettingDataGlobal">
+      <wsdl:input message="tns:GetCustomSettingDataGlobalSoapIn" />
+      <wsdl:output message="tns:GetCustomSettingDataGlobalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomSettingDataUser">
+      <wsdl:input message="tns:GetCustomSettingDataUserSoapIn" />
+      <wsdl:output message="tns:GetCustomSettingDataUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCustomSettingDataGlobal">
+      <wsdl:input message="tns:SetCustomSettingDataGlobalSoapIn" />
+      <wsdl:output message="tns:SetCustomSettingDataGlobalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCustomSettingDataUser">
+      <wsdl:input message="tns:SetCustomSettingDataUserSoapIn" />
+      <wsdl:output message="tns:SetCustomSettingDataUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventTrigger">
+      <wsdl:input message="tns:EventTriggerSoapIn" />
+      <wsdl:output message="tns:EventTriggerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EventTriggerWithMetadata">
+      <wsdl:input message="tns:EventTriggerWithMetadataSoapIn" />
+      <wsdl:output message="tns:EventTriggerWithMetadataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AlertsGetAroundWithSpan">
+      <wsdl:input message="tns:AlertsGetAroundWithSpanSoapIn" />
+      <wsdl:output message="tns:AlertsGetAroundWithSpanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MatrixMonitorActivateCamera">
+      <wsdl:input message="tns:MatrixMonitorActivateCameraSoapIn" />
+      <wsdl:output message="tns:MatrixMonitorActivateCameraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryChanges">
+      <wsdl:input message="tns:QueryChangesSoapIn" />
+      <wsdl:output message="tns:QueryChangesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryRecorderInfo">
+      <wsdl:input message="tns:QueryRecorderInfoSoapIn" />
+      <wsdl:output message="tns:QueryRecorderInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkGetNewReference">
+      <wsdl:input message="tns:BookmarkGetNewReferenceSoapIn" />
+      <wsdl:output message="tns:BookmarkGetNewReferenceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkCreate">
+      <wsdl:input message="tns:BookmarkCreateSoapIn" />
+      <wsdl:output message="tns:BookmarkCreateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkUpdate">
+      <wsdl:input message="tns:BookmarkUpdateSoapIn" />
+      <wsdl:output message="tns:BookmarkUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkDelete">
+      <wsdl:input message="tns:BookmarkDeleteSoapIn" />
+      <wsdl:output message="tns:BookmarkDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkGet">
+      <wsdl:input message="tns:BookmarkGetSoapIn" />
+      <wsdl:output message="tns:BookmarkGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkSearchTime">
+      <wsdl:input message="tns:BookmarkSearchTimeSoapIn" />
+      <wsdl:output message="tns:BookmarkSearchTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkSearchFromBookmark">
+      <wsdl:input message="tns:BookmarkSearchFromBookmarkSoapIn" />
+      <wsdl:output message="tns:BookmarkSearchFromBookmarkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySystemMonitorStateSourcesByIds">
+      <wsdl:input message="tns:QuerySystemMonitorStateSourcesByIdsSoapIn" />
+      <wsdl:output message="tns:QuerySystemMonitorStateSourcesByIdsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QuerySystemMonitorStateSourcesByTypes">
+      <wsdl:input message="tns:QuerySystemMonitorStateSourcesByTypesSoapIn" />
+      <wsdl:output message="tns:QuerySystemMonitorStateSourcesByTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataGetNewReference">
+      <wsdl:input message="tns:MarkedDataGetNewReferenceSoapIn" />
+      <wsdl:output message="tns:MarkedDataGetNewReferenceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataCreate">
+      <wsdl:input message="tns:MarkedDataCreateSoapIn" />
+      <wsdl:output message="tns:MarkedDataCreateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataUpdate">
+      <wsdl:input message="tns:MarkedDataUpdateSoapIn" />
+      <wsdl:output message="tns:MarkedDataUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataDelete">
+      <wsdl:input message="tns:MarkedDataDeleteSoapIn" />
+      <wsdl:output message="tns:MarkedDataDeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataGet">
+      <wsdl:input message="tns:MarkedDataGetSoapIn" />
+      <wsdl:output message="tns:MarkedDataGetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataSearch">
+      <wsdl:input message="tns:MarkedDataSearchSoapIn" />
+      <wsdl:output message="tns:MarkedDataSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientProfile">
+      <wsdl:input message="tns:GetClientProfileSoapIn" />
+      <wsdl:output message="tns:GetClientProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPresets">
+      <wsdl:input message="tns:GetPresetsSoapIn" />
+      <wsdl:output message="tns:GetPresetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePreset">
+      <wsdl:input message="tns:DeletePresetSoapIn" />
+      <wsdl:output message="tns:DeletePresetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePresetName">
+      <wsdl:input message="tns:UpdatePresetNameSoapIn" />
+      <wsdl:output message="tns:UpdatePresetNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePresetPosition">
+      <wsdl:input message="tns:UpdatePresetPositionSoapIn" />
+      <wsdl:output message="tns:UpdatePresetPositionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePreset">
+      <wsdl:input message="tns:CreatePresetSoapIn" />
+      <wsdl:output message="tns:CreatePresetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderPresets">
+      <wsdl:input message="tns:OrderPresetsSoapIn" />
+      <wsdl:output message="tns:OrderPresetsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServerCommandServiceSoap" type="tns:ServerCommandServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerVersion">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetServerVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductInfo">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetProductInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemLicenseInfo">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetSystemLicenseInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmartClientVersion">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetSmartClientVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckSmartClientVersion">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/CheckSmartClientVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsOnline">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/IsOnline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguration">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationRecorders">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetConfigurationRecorders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationHardware">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetConfigurationHardware" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevicesDisabled">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetDevicesDisabled" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVmoServicesList">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetVmoServicesList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewGroups">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetViewGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewGroupData">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetViewGroupData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetViewGroupData">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/SetViewGroupData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomSettingDataGlobal">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetCustomSettingDataGlobal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomSettingDataUser">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetCustomSettingDataUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCustomSettingDataGlobal">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/SetCustomSettingDataGlobal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCustomSettingDataUser">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/SetCustomSettingDataUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventTrigger">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/EventTrigger" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventTriggerWithMetadata">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/EventTriggerWithMetadata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlertsGetAroundWithSpan">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/AlertsGetAroundWithSpan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MatrixMonitorActivateCamera">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MatrixMonitorActivateCamera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryChanges">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/QueryChanges" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryRecorderInfo">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/QueryRecorderInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkGetNewReference">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkGetNewReference" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkCreate">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkCreate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkUpdate">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkDelete">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkGet">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkSearchTime">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkSearchTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkSearchFromBookmark">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkSearchFromBookmark" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySystemMonitorStateSourcesByIds">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/QuerySystemMonitorStateSourcesByIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySystemMonitorStateSourcesByTypes">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/QuerySystemMonitorStateSourcesByTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataGetNewReference">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataGetNewReference" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataCreate">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataCreate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataUpdate">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataDelete">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataGet">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataSearch">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientProfile">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetClientProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPresets">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetPresets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePreset">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/DeletePreset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePresetName">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/UpdatePresetName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePresetPosition">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/UpdatePresetPosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePreset">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/CreatePreset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderPresets">
+      <soap:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/OrderPreset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServerCommandServiceSoap1" type="tns:ServerCommandServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVersion">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerVersion">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetServerVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductInfo">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetProductInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSystemLicenseInfo">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetSystemLicenseInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmartClientVersion">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetSmartClientVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckSmartClientVersion">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/CheckSmartClientVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsOnline">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/IsOnline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/Logout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfiguration">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetConfiguration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationRecorders">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetConfigurationRecorders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationHardware">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetConfigurationHardware" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevicesDisabled">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetDevicesDisabled" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVmoServicesList">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetVmoServicesList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewGroups">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetViewGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewGroupData">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetViewGroupData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetViewGroupData">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/SetViewGroupData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomSettingDataGlobal">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetCustomSettingDataGlobal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomSettingDataUser">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetCustomSettingDataUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCustomSettingDataGlobal">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/SetCustomSettingDataGlobal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCustomSettingDataUser">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/SetCustomSettingDataUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventTrigger">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/EventTrigger" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EventTriggerWithMetadata">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/EventTriggerWithMetadata" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlertsGetAroundWithSpan">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/AlertsGetAroundWithSpan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MatrixMonitorActivateCamera">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MatrixMonitorActivateCamera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryChanges">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/QueryChanges" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryRecorderInfo">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/QueryRecorderInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkGetNewReference">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkGetNewReference" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkCreate">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkCreate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkUpdate">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkDelete">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkGet">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkSearchTime">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkSearchTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookmarkSearchFromBookmark">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/BookmarkSearchFromBookmark" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySystemMonitorStateSourcesByIds">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/QuerySystemMonitorStateSourcesByIds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QuerySystemMonitorStateSourcesByTypes">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/QuerySystemMonitorStateSourcesByTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataGetNewReference">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataGetNewReference" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataCreate">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataCreate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataUpdate">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataDelete">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataDelete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataGet">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataGet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarkedDataSearch">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/MarkedDataSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientProfile">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetClientProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPresets">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/GetPresets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePreset">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/DeletePreset" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePresetName">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/UpdatePresetName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePresetPosition">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/UpdatePresetPosition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePreset">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/CreatePreset" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderPresets">
+      <soap12:operation soapAction="http://videoos.net/2/XProtectCSServerCommand/OrderPreset" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServerCommandService">
+    <wsdl:port name="ServerCommandServiceSoap" binding="tns:ServerCommandServiceSoap">
+      <soap:address location="http://localhost/ServerAPI/ServerCommandService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServerCommandServiceSoap1" binding="tns:ServerCommandServiceSoap1">
+      <soap12:address location="http://localhost/ServerAPI/ServerCommandService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
