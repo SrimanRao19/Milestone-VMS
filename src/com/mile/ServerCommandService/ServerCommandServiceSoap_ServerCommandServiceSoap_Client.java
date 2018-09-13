@@ -16,6 +16,7 @@ import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
 import main.Authentication;
+import main.Configuration;
 
 
 public final class ServerCommandServiceSoap_ServerCommandServiceSoap_Client {
@@ -26,8 +27,7 @@ public final class ServerCommandServiceSoap_ServerCommandServiceSoap_Client {
     }
 
     public static void main(String args[]) throws java.lang.Exception {
-    	Authentication client=new Authentication();
-    	client.bypass();
+    	
         URL wsdlURL = ServerCommandService.WSDL_LOCATION;
         if (args.length > 0 && args[0] != null && !"".equals(args[0])) { 
             File wsdlFile = new File(args[0]);
@@ -41,10 +41,9 @@ public final class ServerCommandServiceSoap_ServerCommandServiceSoap_Client {
                 e.printStackTrace();
             }
         }
-      
         ServerCommandService ss = new ServerCommandService(wsdlURL, SERVICE_NAME);
-        ServerCommandServiceSoap port = ss.getServerCommandServiceSoap();  
-        System.out.println(port.getVersion());
+        ServerCommandServiceSoap port = ss.getServerCommandServiceSoap();
+        
         
         {
         System.out.println("Invoking setCustomSettingDataGlobal...");
