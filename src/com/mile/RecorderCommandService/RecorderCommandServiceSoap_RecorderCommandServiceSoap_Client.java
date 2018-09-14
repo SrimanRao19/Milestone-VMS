@@ -48,7 +48,6 @@ public final class RecorderCommandServiceSoap_RecorderCommandServiceSoap_Client 
       
         RecorderCommandService ss = new RecorderCommandService(wsdlURL, SERVICE_NAME);
         RecorderCommandServiceSoap port = ss.getRecorderCommandServiceSoap();  
-        
         {
         System.out.println("Invoking presetSet...");
         java.lang.String _presetSet_token = "_presetSet_token1757543392";
