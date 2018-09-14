@@ -32,7 +32,7 @@ public class Image {
 //				+ " <cameraid>b7a0cfd7-f9df-405e-a2c7-5a545b9b3d89</cameraid>"	
 //				+"</methodcall>"
 //				+"\r\n\r\n";
-		
+		 System.out.println("..");
 		 System.out.println("......");
 			    ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 			   
