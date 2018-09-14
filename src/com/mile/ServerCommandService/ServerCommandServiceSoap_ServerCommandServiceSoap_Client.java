@@ -20,6 +20,7 @@ import main.Configuration;
 
 
 public final class ServerCommandServiceSoap_ServerCommandServiceSoap_Client {
+	public static String token;
 
     private static final QName SERVICE_NAME = new QName("http://videoos.net/2/XProtectCSServerCommand", "ServerCommandService");
 
@@ -28,6 +29,11 @@ public final class ServerCommandServiceSoap_ServerCommandServiceSoap_Client {
 
     public static void main(String args[]) throws java.lang.Exception {
     	
+    	Authentication client=new Authentication();
+    	client.bypass();
+        token=client.doPost();
+    	//Configuration config=new Configuration();
+    	//config.doPostConfig();
         URL wsdlURL = ServerCommandService.WSDL_LOCATION;
         if (args.length > 0 && args[0] != null && !"".equals(args[0])) { 
             File wsdlFile = new File(args[0]);
@@ -43,6 +49,9 @@ public final class ServerCommandServiceSoap_ServerCommandServiceSoap_Client {
         }
         ServerCommandService ss = new ServerCommandService(wsdlURL, SERVICE_NAME);
         ServerCommandServiceSoap port = ss.getServerCommandServiceSoap();
+        port.login("B7A0CFD7-F9DF-405E-A2C7-5A545B9B3D89", token);
+        
+        
         
         
         {
