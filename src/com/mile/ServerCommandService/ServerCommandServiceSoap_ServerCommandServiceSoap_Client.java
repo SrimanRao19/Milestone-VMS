@@ -48,12 +48,9 @@ public final class ServerCommandServiceSoap_ServerCommandServiceSoap_Client {
             }
         }
         ServerCommandService ss = new ServerCommandService(wsdlURL, SERVICE_NAME);
-        ServerCommandServiceSoap port = ss.getServerCommandServiceSoap();
-        port.login("B7A0CFD7-F9DF-405E-A2C7-5A545B9B3D89", token);
-        
-        
-        
-        
+        ServerCommandServiceSoap port = ss.getServerCommandServiceSoap(); 
+    
+        ServerCommandServiceSoap_ServerCommandServiceSoap_Client soap=new ServerCommandServiceSoap_ServerCommandServiceSoap_Client();
         {
         System.out.println("Invoking setCustomSettingDataGlobal...");
         java.lang.String _setCustomSettingDataGlobal_token = "_setCustomSettingDataGlobal_token-3224068";
