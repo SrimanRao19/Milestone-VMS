@@ -12,6 +12,8 @@ import javax.xml.xpath.XPathExpressionException;
 
 import org.xml.sax.SAXException;
 
+import com.mile.ServerCommandService.ServerCommandService;
+
 public class Configuration {
 public static String token;
 	public static void main(String[] args) throws Exception {
@@ -20,7 +22,8 @@ public static String token;
 		client.bypass();
 		token=client.doPost();
 		Configuration config=new Configuration();
-		config.doPostConfig();		
+		config.doPostConfig();	
+		
 	} 
 	public void doPostConfig() throws IOException, XPathExpressionException, ParserConfigurationException, SAXException {
 	    	 String url = "https://localhost//ManagementServer/ServerCommandService.svc";
