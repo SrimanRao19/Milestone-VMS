@@ -95,7 +95,7 @@ public class Authentication {
 	    wr.close();
 
 	    int responseCode = con.getResponseCode();
-	    System.out.println("\nSending 'POST' request to URL : " + url);
+	    //System.out.println("\nSending 'POST' request to URL : " + url);
 	    //System.out.println("Post parameters : " + urlParameters);
 	    //System.out.println("Response Code : " + responseCode);
 
@@ -117,7 +117,7 @@ public class Authentication {
 	   XPath xpath = XPathFactory.newInstance().newXPath();
 	   XPathExpression expr=xpath.compile("/Envelope/Body/LoginResponse/LoginResult/Token/text()");
 	   String token = (String)expr.evaluate(doc, XPathConstants.STRING);
-	   System.out.println(token);
+	   //System.out.println(token);
 	   return(token);
    }
    }
